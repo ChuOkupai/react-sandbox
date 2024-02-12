@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+    container_name: app
+    env_file:
+      - .env
+    init: true
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - .:/app
+    networks:
+      - app_network
+    restart: always
+
+networks:
+  app_network:
+    driver: bridge
